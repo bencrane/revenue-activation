@@ -71,17 +71,17 @@ export default function WhatWeDoSection() {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card relative premium-card p-8 backdrop-blur-sm opacity-0 transition-all duration-300 hover:translate-y-[-8px] hover:shadow-lg group"
+              className="service-card relative border border-yellow-400/30 p-8 backdrop-blur-sm opacity-0 transition-all duration-300 hover:translate-y-[-8px] hover:border-yellow-400 hover:bg-yellow-400/5 group"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/70 to-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <h3 className="text-xl font-medium mb-4 text-white border-b-2 border-yellow-400 w-fit pb-1">{service.title}</h3>
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-yellow-400/70 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <h3 className="text-xl font-medium mb-4 text-yellow-400">{service.title}</h3>
               <p className="text-neutral-300">{service.description}</p>
             </div>
           ))}
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
     </section>
   );
 }

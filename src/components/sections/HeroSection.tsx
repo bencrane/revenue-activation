@@ -44,7 +44,7 @@ export default function HeroSection() {
           <div className="lg:w-1/2 text-left">
             <h1
               ref={headingRef}
-              className="text-4xl md:text-5xl lg:text-6xl font-medium mb-4 tracking-tight text-white opacity-0"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-yellow-400 opacity-0"
               style={{ transitionDelay: '100ms' }}
             >
               The GTM Engineering Firm
@@ -57,7 +57,7 @@ export default function HeroSection() {
               We surface the revenue paths your team is blind to — using signal-layered infrastructure built to accelerate what you're already doing.
             </p>
             <div ref={ctaRef} className="opacity-0 mt-4" style={{ transitionDelay: '500ms' }}>
-              <CTAButton className="border-yellow-400 hover:border-yellow-300 hover:bg-yellow-400/10 transition-all">Request Access</CTAButton>
+              <CTAButton className="border border-yellow-400 hover:border-yellow-300 hover:bg-yellow-400/10 transition-all duration-300">Request Access</CTAButton>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
     </section>
   );
 }

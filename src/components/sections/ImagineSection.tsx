@@ -41,7 +41,7 @@ export default function ImagineSection() {
             {scenarios.map((scenario, index) => (
               <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-2/3 lg:basis-1/2">
                 <div
-                  className="h-full p-10 rounded-xl group transition-all duration-500 border border-yellow-400/30 hover:border-yellow-400"
+                  className="h-full p-10 border border-yellow-400/30 hover:border-yellow-400 rounded-xl group transition-all duration-500"
                 >
                   <p className="text-lg md:text-xl text-neutral-300">
                     {scenario}
@@ -51,12 +51,12 @@ export default function ImagineSection() {
             ))}
           </CarouselContent>
           <div className="hidden md:block">
-            <CarouselPrevious className="border-primary/20 hover:bg-primary/20 -left-6" />
-            <CarouselNext className="border-primary/20 hover:bg-primary/20 -right-6" />
+            <CarouselPrevious className="border-yellow-400/20 hover:bg-yellow-400/10 -left-6" />
+            <CarouselNext className="border-yellow-400/20 hover:bg-yellow-400/10 -right-6" />
           </div>
         </Carousel>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
     </section>
   );
 }

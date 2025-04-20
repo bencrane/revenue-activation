@@ -54,7 +54,7 @@ export default function ResultsSection() {
           {results.map((result, index) => (
             <div
               key={index}
-              className="result-item border border-yellow-400/20 hover:border-yellow-400 hover:bg-yellow-400/5 transition-all py-12 px-6 flex flex-col items-center justify-center text-center min-h-32 opacity-0"
+              className="result-item border border-yellow-400/30 hover:border-yellow-400 hover:bg-yellow-400/5 transition-all py-12 px-6 flex flex-col items-center justify-center text-center min-h-32 opacity-0"
             >
               <div className="w-10 h-10 rounded-full bg-yellow-400 mb-4 flex items-center justify-center">
                 <span className="text-black font-medium">{index + 1}</span>
@@ -64,7 +64,7 @@ export default function ResultsSection() {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
     </section>
   );
 }
