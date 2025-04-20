@@ -52,13 +52,13 @@ export default function WhatWeDoSection() {
   }, []);
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 xl:px-20 relative">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <SectionHeading>We don't sell dashboards. We deliver clarity.</SectionHeading>
+    <section className="py-24 relative">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="mb-12 text-center">
+          <SectionHeading className="text-yellow-400">We don't sell dashboards. We deliver clarity.</SectionHeading>
           <p 
             ref={descriptionRef} 
-            className="text-lg text-muted-foreground opacity-0 mt-6 max-w-2xl mx-auto"
+            className="text-lg text-neutral-300 opacity-0"
           >
             Our system plugs into your motion and outputs signal, not noise.
           </p>
@@ -66,19 +66,22 @@ export default function WhatWeDoSection() {
         
         <div 
           ref={cardsContainerRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
         >
           {services.map((service, index) => (
             <div 
-              key={index}
-              className="service-card bg-card border border-border rounded-xl p-8 opacity-0 flex flex-col justify-center min-h-[200px]"
+              key={index} 
+              className="service-card relative premium-card p-8 backdrop-blur-sm opacity-0 transition-all duration-300 hover:translate-y-[-8px] hover:shadow-lg group"
             >
-              <h3 className="text-xl font-medium mb-4">{service.title}</h3>
-              <p className="text-muted-foreground">{service.description}</p>
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/70 to-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <h3 className="text-xl font-medium mb-4 text-white border-b-2 border-yellow-400 w-fit pb-1">{service.title}</h3>
+              <p className="text-neutral-300">{service.description}</p>
             </div>
           ))}
         </div>
       </div>
+      
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
     </section>
   );
 }

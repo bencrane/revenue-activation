@@ -42,27 +42,29 @@ export default function ResultsSection() {
   }, []);
 
   return (
-    <section className="py-32 md:py-40 px-6 md:px-12 xl:px-20 relative">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeading className="text-center mb-20">
+    <section className="pt-40 pb-32 relative">
+      <div className="max-w-4xl mx-auto px-8">
+        <SectionHeading className="text-center mb-20 text-yellow-400">
           What Happens When You Plug In Our System
         </SectionHeading>
         <div
           ref={resultsContainerRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12"
         >
           {results.map((result, index) => (
             <div
               key={index}
-              className="result-item opacity-0 border border-border bg-card rounded-xl py-12 px-6 flex items-center justify-center min-h-[160px]"
+              className="result-item border border-yellow-400/20 hover:border-yellow-400 hover:bg-yellow-400/5 transition-all py-12 px-6 flex flex-col items-center justify-center text-center min-h-32 opacity-0"
             >
-              <p className="font-medium text-xl text-center">{result}</p>
+              <div className="w-10 h-10 rounded-full bg-yellow-400 mb-4 flex items-center justify-center">
+                <span className="text-black font-medium">{index + 1}</span>
+              </div>
+              <p className="text-lg font-medium flex items-center justify-center h-full text-neutral-300">{result}</p>
             </div>
           ))}
         </div>
       </div>
-      {/* Subtle background glow effect */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-64 bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
     </section>
   );
 }

@@ -41,22 +41,24 @@ export default function FinalCTASection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-48 pb-48 relative px-6 md:px-12 xl:px-20">
-      <div className="max-w-3xl mx-auto text-center">
+    <section ref={sectionRef} className="pt-40 pb-32 relative">
+      <div className="max-w-3xl mx-auto px-8 text-left">
         <h2
           ref={headingRef}
-          className="text-3xl md:text-4xl font-medium mb-6 text-gradient-gold opacity-0"
+          className="text-3xl md:text-4xl font-medium mb-5 text-yellow-400 opacity-0 text-left"
         >
           We're onboarding a small number of early teams.
         </h2>
         <p
           ref={textRef}
-          className="text-xl mb-10 text-muted-foreground max-w-2xl mx-auto opacity-0"
+          className="text-xl mb-10 text-neutral-300 max-w-2xl opacity-0 text-left"
         >
           If you think your GTM team is flying blind, we'll show you what you're missing.
         </p>
-        <div ref={buttonRef} className="opacity-0">
-          <CTAButton>Request Access</CTAButton>
+        <div ref={buttonRef} className="opacity-0 text-left">
+          <CTAButton className="border-yellow-400 hover:border-yellow-300 hover:bg-yellow-400/10 transition-all shadow-[0_0_20px] shadow-yellow-400/20">
+            Request Access
+          </CTAButton>
         </div>
       </div>
       {/* Premium subtle glow effect at bottom */}

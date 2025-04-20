@@ -35,25 +35,43 @@ export default function HeroSection() {
       if (diagramRef.current) observer.unobserve(diagramRef.current);
     };
   }, []);
-  
+
   return (
-    <section className="py-24 md:py-32 relative px-6 md:px-12 xl:px-20">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div className="space-y-8">
-          <h1 ref={headingRef} className="text-4xl md:text-5xl lg:text-6xl font-bold opacity-0">
-            Get signals that actually drive revenue
-          </h1>
-          <p ref={descriptionRef} className="text-xl text-muted-foreground opacity-0 mb-8">
-            Stop wasting time with dashboards that don't convert. Our system plugs directly into your go-to-market motion.
-          </p>
-          <div ref={ctaRef} className="opacity-0">
-            <CTAButton>Request Access</CTAButton>
+    <section className="flex flex-col items-center justify-center pt-32 pb-40 md:pt-40 md:pb-48 relative">
+      <div className="max-w-6xl mx-auto px-8 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Text Content */}
+          <div className="lg:w-1/2 text-left">
+            <h1
+              ref={headingRef}
+              className="text-4xl md:text-5xl lg:text-6xl font-medium mb-4 tracking-tight text-white opacity-0"
+              style={{ transitionDelay: '100ms' }}
+            >
+              The GTM Engineering Firm
+            </h1>
+            <p
+              ref={descriptionRef}
+              className="text-xl md:text-2xl mb-6 text-neutral-300 max-w-3xl mx-auto lg:mx-0 leading-relaxed opacity-0"
+              style={{ transitionDelay: '300ms' }}
+            >
+              We surface the revenue paths your team is blind to — using signal-layered infrastructure built to accelerate what you're already doing.
+            </p>
+            <div ref={ctaRef} className="opacity-0 mt-4" style={{ transitionDelay: '500ms' }}>
+              <CTAButton className="border-yellow-400 hover:border-yellow-300 hover:bg-yellow-400/10 transition-all">Request Access</CTAButton>
+            </div>
+          </div>
+
+          {/* ETL Diagram */}
+          <div
+            ref={diagramRef}
+            className="lg:w-1/2 opacity-0 w-full flex items-center justify-center lg:justify-end"
+            style={{ transitionDelay: '700ms' }}
+          >
+            <ETLDiagram />
           </div>
         </div>
-        <div ref={diagramRef} className="opacity-0 flex justify-center">
-          <ETLDiagram />
-        </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
     </section>
   );
 }

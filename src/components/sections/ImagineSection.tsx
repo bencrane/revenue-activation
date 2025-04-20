@@ -20,46 +20,43 @@ export default function ImagineSection() {
     "You can prioritize outbound based on actual buyer readiness instead of arbitrary ICP definitions."
   ];
 
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   return (
-    <section className="py-40 px-6 md:px-12 xl:px-20 relative">
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading className="text-center mb-16">
-          Imagine a world where...
-        </SectionHeading>
-        
+    <section className="py-40 relative overflow-x-auto">
+      <div className="max-w-5xl mx-auto px-8">
+        <SectionHeading className="mb-14 text-left text-yellow-400">Imagine if...</SectionHeading>
         <Carousel
-          setApi={setApi}
+          opts={{
+            align: "start",
+            loop: true,
+            duration: 1500,
+            dragFree: false,
+            skipSnaps: false,
+          }}
+          setApi={setCarouselApi}
           className="w-full"
-          onSelect={(index) => setCurrent(index)}
         >
-          <CarouselContent className="-ml-8">
+          <CarouselContent className="-ml-4 md:-ml-6">
             {scenarios.map((scenario, index) => (
-              <CarouselItem key={index} className="pl-8 md:basis-1/2 lg:basis-1/3">
-                <div className="border border-border bg-card rounded-xl h-full p-8 md:p-10 flex items-center min-h-[240px]">
-                  <p className="text-lg">{scenario}</p>
+              <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-2/3 lg:basis-1/2">
+                <div
+                  className="h-full p-10 rounded-xl group transition-all duration-500 border border-yellow-400/30 hover:border-yellow-400"
+                >
+                  <p className="text-lg md:text-xl text-neutral-300">
+                    {scenario}
+                  </p>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex justify-center mt-12 gap-4">
-            <CarouselPrevious className="static transform-none" />
-            <CarouselNext className="static transform-none" />
+          <div className="hidden md:block">
+            <CarouselPrevious className="border-primary/20 hover:bg-primary/20 -left-6" />
+            <CarouselNext className="border-primary/20 hover:bg-primary/20 -right-6" />
           </div>
         </Carousel>
-        
-        <div className="flex justify-center mt-8 gap-1">
-          {scenarios.map((_, index) => (
-            <button
-              key={index}
-              className={`w-2 h-2 rounded-full ${current === index ? 'bg-primary' : 'bg-muted'}`}
-              onClick={() => api?.scrollTo(index)}
-            />
-          ))}
-        </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
     </section>
   );
 }
