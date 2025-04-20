@@ -1,0 +1,175 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern dark theme with neon green & gold accents */
+    --background: 160 30% 3%; /* Near-black */
+    --foreground: 0 0% 98%; /* Clean white */
+
+    --card: 160 30% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 160 30% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Dark neon green as primary */
+    --primary: 160 100% 45%;
+    --primary-foreground: 0 0% 10%;
+
+    /* Gold as accent */
+    --accent: 45 80% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --secondary: 160 30% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 20% 15%;
+    --input: 160 25% 12%;
+    --ring: 160 100% 45%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 160 30% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 160 30% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 160 30% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Dark neon green as primary */
+    --primary: 160 100% 45%;
+    --primary-foreground: 0 0% 10%;
+
+    /* Gold as accent */
+    --accent: 45 80% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --secondary: 160 20% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 20% 15%;
+    --input: 160 25% 12%;
+    --ring: 160 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/70 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-secondary/40 border border-white/10;
+  }
+  
+  .premium-card {
+    @apply bg-gradient-to-b from-secondary/80 to-secondary/40 border border-primary/20 backdrop-blur-sm hover:border-primary/40 transition-all duration-300;
+  }
+  
+  .premium-shadow {
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+  }
+
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(0,255,170,0.3)];
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px theme('colors.primary.DEFAULT');
+    @apply text-transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes flow {
+    0% {
+      transform: translateX(0%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}
+
+/* ETL Diagram Styles */
+.etl-diagram {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid hsl(var(--border));
+  position: relative;
+}
+
+.etl-node {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.etl-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 170, 0.15);
+  border-color: hsl(var(--primary));
+}
+
+.etl-arrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .etl-diagram {
+    padding: 15px;
+  }
+  
+  .etl-diagram > div {
+    flex-direction: column;
+  }
+  
+  .etl-node {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
