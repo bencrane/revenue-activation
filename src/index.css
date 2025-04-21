@@ -1,136 +1,175 @@
-// tailwind.config.ts
-import type { Config } from "tailwindcss";
 
-export default {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      fontFamily: {
-        sans: ["Inter var", "Inter", "system-ui", "sans-serif"],
-      },
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-      colors: {
-        // ------------------------------------
-        // 1) your CSS‑variable driven palette
-        // ------------------------------------
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          // gold headlines / emphasis
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        secondary: {
-          // teal interactive elements
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+@layer base {
+  :root {
+    /* Modern dark theme with neon green & gold accents */
+    --background: 160 30% 3%; /* Near-black */
+    --foreground: 0 0% 98%; /* Clean white */
 
-        // -------------------------------------------------
-        // 2) static “design tokens” for direct reference
-        // -------------------------------------------------
-        // Primary = gold, Secondary = teal
-        "brand-primary": "#FACC15",    // gold
-        "brand-secondary": "#10B981",  // teal
+    --card: 160 30% 5%;
+    --card-foreground: 0 0% 98%;
 
-        // Neutrals
-        white: "#FFFFFF",
-        black: "#000000",
-        "gray-100": "#F3F4F6",
-        "gray-300": "#D1D1D1",
-        "gray-400": "#9CA3AF",
-        "gray-800": "#1F2937",
-      },
+    --popover: 160 30% 4%;
+    --popover-foreground: 0 0% 98%;
 
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+    /* Dark neon green as primary */
+    --primary: 160 100% 45%;
+    --primary-foreground: 0 0% 10%;
 
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(10px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in-slow": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        glow: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.7" },
-        },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(255, 230, 150, 0)" },
-          "50%": { boxShadow: "0 0 10px 2px rgba(255, 230, 150, 0.3)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5px)" },
-        },
-      },
+    /* Gold as accent */
+    --accent: 45 80% 65%;
+    --accent-foreground: 0 0% 10%;
 
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out forwards",
-        "fade-in-slow": "fade-in-slow 1.2s ease-out forwards",
-        glow: "glow 3s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 3s infinite",
-        float: "float 5s ease-in-out infinite",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+    --secondary: 160 30% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 20% 15%;
+    --input: 160 25% 12%;
+    --ring: 160 100% 45%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 160 30% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 160 30% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 160 30% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Dark neon green as primary */
+    --primary: 160 100% 45%;
+    --primary-foreground: 0 0% 10%;
+
+    /* Gold as accent */
+    --accent: 45 80% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --secondary: 160 20% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 160 25% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 20% 15%;
+    --input: 160 25% 12%;
+    --ring: 160 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/70 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-secondary/40 border border-white/10;
+  }
+  
+  .premium-card {
+    @apply bg-gradient-to-b from-secondary/80 to-secondary/40 border border-primary/20 backdrop-blur-sm hover:border-primary/40 transition-all duration-300;
+  }
+  
+  .premium-shadow {
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+  }
+
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(0,255,170,0.3)];
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px theme('colors.primary.DEFAULT');
+    @apply text-transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes flow {
+    0% {
+      transform: translateX(0%);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+}
+
+/* ETL Diagram Styles */
+.etl-diagram {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid hsl(var(--border));
+  position: relative;
+}
+
+.etl-node {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.etl-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 170, 0.15);
+  border-color: hsl(var(--primary));
+}
+
+.etl-arrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .etl-diagram {
+    padding: 15px;
+  }
+  
+  .etl-diagram > div {
+    flex-direction: column;
+  }
+  
+  .etl-node {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
