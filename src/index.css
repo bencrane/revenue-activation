@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* Modern dark theme with neon green & gold accents */
-    --background: 160 30% 3%; /* Near‑black */
-    --foreground: 0 0% 98%;  /* Clean white */
+    --background: 160 30% 3%; /* Near-black */
+    --foreground: 0 0% 98%;   /* Clean white */
 
     --card: 160 30% 5%;
     --card-foreground: 0 0% 98%;
@@ -39,6 +39,7 @@
   }
 
   .dark {
+    /* same variables for dark mode */
     --background: 160 30% 3%;
     --foreground: 0 0% 98%;
 
@@ -48,11 +49,9 @@
     --popover: 160 30% 4%;
     --popover-foreground: 0 0% 98%;
 
-    /* Dark neon green as primary */
     --primary: 160 100% 45%;
     --primary-foreground: 0 0% 10%;
 
-    /* Gold as accent */
     --accent: 45 80% 65%;
     --accent-foreground: 0 0% 10%;
 
@@ -69,27 +68,33 @@
     --input: 160 25% 12%;
     --ring: 160 100% 45%;
   }
-}
 
-@layer base {
+  /* apply site‑wide background + text color without @apply */
+  html,
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color:            hsl(var(--foreground));
   }
 }
 
 @layer utilities {
   .text-gradient-gold {
-    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/70 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/70
+           bg-clip-text text-transparent;
   }
-  
+
   .glass-effect {
-    @apply backdrop-blur-md bg-secondary/40 border border-white/10;
+    @apply backdrop-blur-md bg-secondary/40
+           border border-white/10;
   }
-  
+
   .premium-card {
-    @apply bg-gradient-to-b from-secondary/80 to-secondary/40 border border-primary/20 backdrop-blur-sm hover:border-primary/40 transition-all duration-300;
+    @apply bg-gradient-to-b from-secondary/80 to-secondary/40
+           border border-primary/20
+           backdrop-blur-sm hover:border-primary/40
+           transition-all duration-300;
   }
-  
+
   .premium-shadow {
     @apply shadow-[0_8px_30px_rgb(0,0,0,0.12)];
   }
@@ -109,21 +114,13 @@
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0);  }
   }
 
   @keyframes flow {
-    0% {
-      transform: translateX(0%);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
+    0%   { transform: translateX(0%);   opacity: 0; }
+    50%  {                         opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
   }
 }
 
@@ -158,11 +155,9 @@
   .etl-diagram {
     padding: 15px;
   }
-  
   .etl-diagram > div {
     flex-direction: column;
   }
-  
   .etl-node {
     width: 100%;
     margin: 10px 0;
