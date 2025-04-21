@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
+import { Card } from "@/components/ui/card";
 
 export default function WhatWeDoSection() {
   const services = [
@@ -52,10 +53,10 @@ export default function WhatWeDoSection() {
   }, []);
 
   return (
-    <section className="py-24 relative">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-32 relative">
+      <div className="max-w-4xl mx-auto px-8">
         <div className="mb-12 text-center">
-          <SectionHeading className="text-yellow-400">We don't sell dashboards. We deliver clarity.</SectionHeading>
+          <SectionHeading className="text-brand-primary">We don't sell dashboards. We deliver clarity.</SectionHeading>
           <p 
             ref={descriptionRef} 
             className="text-lg text-neutral-300 opacity-0"
@@ -66,15 +67,15 @@ export default function WhatWeDoSection() {
         
         <div 
           ref={cardsContainerRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8"
         >
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card relative border border-yellow-400/30 p-8 backdrop-blur-sm opacity-0 transition-all duration-300 hover:translate-y-[-8px] hover:border-yellow-400 hover:bg-yellow-400/5 group"
+              className="service-card border border-brand-accent/30 p-8 backdrop-blur-sm opacity-0 transition-all duration-300 hover:border-brand-accent hover:bg-hoverAccent/5 rounded-xl group"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-yellow-400/70 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <h3 className="text-xl font-medium mb-4 text-yellow-400">{service.title}</h3>
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-accent/70 to-brand-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <h3 className="text-xl font-medium mb-4 text-white">{service.title}</h3>
               <p className="text-neutral-300">{service.description}</p>
             </div>
           ))}

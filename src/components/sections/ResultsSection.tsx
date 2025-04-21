@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
+import { Card } from "@/components/ui/card";
 
 export default function ResultsSection() {
   const results = [
@@ -42,21 +43,21 @@ export default function ResultsSection() {
   }, []);
 
   return (
-    <section className="pt-40 pb-32 relative">
+    <section className="py-32 relative">
       <div className="max-w-4xl mx-auto px-8">
-        <SectionHeading className="text-center mb-20 text-yellow-400">
+        <SectionHeading className="text-center mb-12 text-brand-primary">
           What Happens When You Plug In Our System
         </SectionHeading>
         <div
           ref={resultsContainerRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
         >
           {results.map((result, index) => (
             <div
               key={index}
-              className="result-item border border-yellow-400/30 hover:border-yellow-400 hover:bg-yellow-400/5 transition-all py-12 px-6 flex flex-col items-center justify-center text-center min-h-32 opacity-0"
+              className="result-item border border-brand-accent/30 hover:border-brand-accent hover:bg-hoverAccent/5 transition-all py-12 px-6 flex flex-col items-center justify-center text-center min-h-32 opacity-0 rounded-xl"
             >
-              <div className="w-10 h-10 rounded-full bg-yellow-400 mb-4 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-brand-accent mb-4 flex items-center justify-center">
                 <span className="text-black font-medium">{index + 1}</span>
               </div>
               <p className="text-lg font-medium flex items-center justify-center h-full text-neutral-300">{result}</p>

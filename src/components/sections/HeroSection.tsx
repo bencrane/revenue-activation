@@ -1,75 +1,59 @@
-import { useEffect, useRef } from "react";
-import { CTAButton } from "@/components/ui/cta-button";
-import ETLDiagram from "@/components/ETLDiagram";
+import { useState } from "react";
+import SectionHeading from "@/components/SectionHeading";
+import { Card } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi
+} from "@/components/ui/carousel";
 
-export default function HeroSection() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-  const diagramRef = useRef<HTMLDivElement>(null);
+export default function ImagineSection() {
+  const scenarios = [
+    "Your paid ads only show to buyers at companies matching your most successful customers.",
+    "You know exactly when previous prospects change jobs into decision-making roles.",
+    "Your CRM highlights buyers three degrees of connection away from your existing champions.",
+    "You can identify which accounts are consuming your content anonymously.",
+    "Your GTM systems detect buying intent based on network proximity rather than just content engagement.",
+    "You can track when competitors' customers become open to switching vendors before they start researching.",
+    "You can prioritize outbound based on actual buyer readiness instead of arbitrary ICP definitions."
+  ];
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    if (headingRef.current) observer.observe(headingRef.current);
-    if (descriptionRef.current) observer.observe(descriptionRef.current);
-    if (ctaRef.current) observer.observe(ctaRef.current);
-    if (diagramRef.current) observer.observe(diagramRef.current);
-
-    return () => {
-      if (headingRef.current) observer.unobserve(headingRef.current);
-      if (descriptionRef.current) observer.unobserve(descriptionRef.current);
-      if (ctaRef.current) observer.unobserve(ctaRef.current);
-      if (diagramRef.current) observer.unobserve(diagramRef.current);
-    };
-  }, []);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
   return (
-    <section className="flex flex-col items-center justify-center pt-32 pb-40 md:pt-40 md:pb-48 relative">
-      <div className="max-w-6xl mx-auto px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Text Content */}
-          <div className="lg:w-1/2 text-left">
-            <h1
-              ref={headingRef}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-yellow-400 opacity-0"
-              style={{ transitionDelay: '100ms' }}
-            >
-              The GTM Engineering Firm
-            </h1>
-            <p
-              ref={descriptionRef}
-              className="text-xl md:text-2xl mb-6 text-neutral-300 max-w-3xl mx-auto lg:mx-0 leading-relaxed opacity-0"
-              style={{ transitionDelay: '300ms' }}
-            >
-              We surface the revenue paths your team is blind to — using signal-layered infrastructure built to accelerate what you're already doing.
-            </p>
-            <div ref={ctaRef} className="opacity-0 mt-4" style={{ transitionDelay: '500ms' }}>
-              <CTAButton className="border border-yellow-400 hover:border-yellow-300 hover:bg-yellow-400/10 transition-all duration-300">Request Access</CTAButton>
-            </div>
+    <section className="py-32 relative overflow-x-auto">
+      <div className="max-w-5xl mx-auto px-8">
+        <SectionHeading className="mb-14 text-left text-brand-primary">Imagine if...</SectionHeading>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+            duration: 1500,
+            dragFree: false,
+            skipSnaps: false,
+          }}
+          setApi={setCarouselApi}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4 md:-ml-6">
+            {scenarios.map((scenario, index) => (
+              <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-2/3 lg:basis-1/2">
+                <div className="h-full p-8 border border-brand-accent/30 hover:border-brand-accent rounded-xl transition-all duration-300">
+                  <p className="text-lg text-neutral-300">
+                    {scenario}
+                  </p>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="hidden md:block">
+            <CarouselPrevious className="border-brand-accent/20 hover:bg-hoverAccent -left-6" />
+            <CarouselNext className="border-brand-accent/20 hover:bg-hoverAccent -right-6" />
           </div>
-
-          {/* ETL Diagram */}
-          <div
-            ref={diagramRef}
-            className="lg:w-1/2 opacity-0 w-full flex items-center justify-center lg:justify-end"
-            style={{ transitionDelay: '700ms' }}
-          >
-            <ETLDiagram />
-          </div>
-        </div>
+        </Carousel>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
     </section>

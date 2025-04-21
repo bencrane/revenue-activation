@@ -1,26 +1,28 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-interface CardProps {
-  children: ReactNode;
-  className?: string;
-  numbered?: number;
+interface CTAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  secondary?: boolean;
 }
 
-export function Card({ children, className, numbered }: CardProps) {
+export function CTAButton({
+  className,
+  children,
+  secondary = false,
+  ...props
+}: CTAButtonProps) {
   return (
-    <div
+    <button
       className={cn(
-        "border border-brand-accent/30 p-8 rounded-xl transition-all duration-300 hover:border-brand-accent",
+        secondary
+          ? "border border-gray-400 text-neutral-300 bg-transparent hover:border-gray-300 hover:bg-gray-800"
+          : "border border-brand-primary text-white bg-transparent hover:border-brand-accent hover:bg-hoverAccent",
+        "px-6 py-3 rounded-lg transition-all duration-300",
         className
       )}
+      {...props}
     >
-      {numbered && (
-        <div className="w-10 h-10 rounded-full bg-brand-accent text-black flex items-center justify-center mb-4">
-          <span className="font-medium">{numbered}</span>
-        </div>
-      )}
       {children}
-    </div>
+    </button>
   );
 }
