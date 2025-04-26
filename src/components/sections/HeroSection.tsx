@@ -1,61 +1,59 @@
-import { useState } from "react";
-import SectionHeading from "@/components/SectionHeading";
-import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi
-} from "@/components/ui/carousel";
 
-export default function ImagineSection() {
-  const scenarios = [
-    "Your paid ads only show to buyers at companies matching your most successful customers.",
-    "You know exactly when previous prospects change jobs into decision-making roles.",
-    "Your CRM highlights buyers three degrees of connection away from your existing champions.",
-    "You can identify which accounts are consuming your content anonymously.",
-    "Your GTM systems detect buying intent based on network proximity rather than just content engagement.",
-    "You can track when competitors' customers become open to switching vendors before they start researching.",
-    "You can prioritize outbound based on actual buyer readiness instead of arbitrary ICP definitions."
-  ];
+import { Button } from "@/components/ui/button";
+import { TrendingUp } from "lucide-react";
 
-  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-
+export default function HeroSection() {
   return (
-    <section className="py-32 relative overflow-x-auto">
-      <div className="max-w-5xl mx-auto px-8">
-        <SectionHeading className="mb-14 text-left text-brand-primary">Imagine if...</SectionHeading>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-            duration: 1500,
-            dragFree: false,
-            skipSnaps: false,
-          }}
-          setApi={setCarouselApi}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4 md:-ml-6">
-            {scenarios.map((scenario, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-2/3 lg:basis-1/2">
-                <div className="h-full p-8 border border-brand-accent/30 hover:border-brand-accent rounded-xl transition-all duration-300">
-                  <p className="text-lg text-neutral-300">
-                    {scenario}
-                  </p>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="hidden md:block">
-            <CarouselPrevious className="border-brand-accent/20 hover:bg-hoverAccent -left-6" />
-            <CarouselNext className="border-brand-accent/20 hover:bg-hoverAccent -right-6" />
-          </div>
-        </Carousel>
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-background">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10" />
+        <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-gradient-to-t from-background to-transparent" />
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
+
+      <div className="container max-w-6xl mx-auto px-6 py-20 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Hero Content */}
+          <div className="flex-1 text-left animate-fade-in">
+            <div className="flex items-center gap-2 mb-6">
+              <TrendingUp className="text-primary w-6 h-6" />
+              <span className="text-gradient-gold font-medium">
+                Revenue Activation Platform
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+              <span className="text-foreground">Unlock Hidden</span>
+              <br />
+              <span className="text-gradient-gold">Revenue Paths</span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground max-w-xl mb-8">
+              Surface untapped opportunities within your CRM, customer data, and market insights to drive exponential growth.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" className="group relative overflow-hidden">
+                <span className="relative z-10">Get Started</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+              <Button variant="outline" size="lg">
+                Learn More
+              </Button>
+            </div>
+          </div>
+
+          {/* Hero Visual */}
+          <div className="flex-1 relative w-full aspect-square max-w-xl">
+            <div className="absolute inset-0 glass-effect rounded-2xl overflow-hidden">
+              <div className="h-full w-full bg
+              -[radial-gradient(circle_at_50%_120%,hsl(var(--primary)),transparent_70%)]" />
+            </div>
+            <div className="absolute inset-0 backdrop-blur-3xl opacity-50" />
+            <div className="absolute -inset-px border border-white/10 rounded-2xl neon-glow" />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
